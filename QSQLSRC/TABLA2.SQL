@@ -1,1 +1,2 @@
-@цыеаЦе@Цабсе@ЦабсаР@Mид@цхаыMР]k@ужт@цхаыMРП]k@аве@цхаыMРП]]%@``@еБЦж@еБ@Ду@цжтеуЦаыиж%
+ CREATE TABLE TABLA2 (ID CHAR(2), NOM CHAR(20), APE CHAR(20))
+ -- ESTO ES UN COMENTARIO CLIP
