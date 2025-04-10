@@ -1,0 +1,74 @@
+     A*%%TS  SD  20250408  134544  JG          REL-V7R3M0  5770-WDS
+     A*¹---------------------------------------------------------------
+     A*ÌCOPYRIGHT CLIP TECNOLOGIA
+     A*ÌPRUEBA ALDON RDOI     ZZZZZZ
+     A*¹---------------------------------------------------------------
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      PRINT
+     A*                                     OVERLAY
+     A          R FMT01
+     A*%%TS  SD  20250408  000822  JG          REL-V7R3M0  5770-WDS
+     A                                      BLINK
+     A                                      KEEP
+     A                                      CF03(03 'Exit')
+     A                                  1  2'CLIP'
+     A                                  1  7'TECNOLOGIA'
+     A                                  4 26'Consulta de Productos'
+     A                                      DSPATR(UL)
+     A                                  6  2'NRO CLIENTE:'
+     A            CLIENT         6S 0B  6 16
+     A                                  2 68TIME
+     A                                  1 68DATE
+     A                                      EDTWRD('  /  /  ')
+     A                                 24  2'F3=Salir'
+     A                                      COLOR(BLU)
+     A*¹---------------------------------------------------------------
+     A*¹Subfile Format
+     A*¹---------------------------------------------------------------
+     A          R SFL01                     SFL
+     A*%%TS  SD  20250408  134334  JG          REL-V7R3M0  5770-WDS
+     A            SFCODP         6Y 0O 10  2TEXT('Producto')
+     A                                      EDTCDE(Z)
+     A            SFNOMB        40A  O 10 14TEXT('Nombre')
+     A            SFCANT         6Y 0O 10 58TEXT('Cantidad')
+     A                                      EDTCDE(Z)
+     A            SFESTA         3   O 10 67
+     A*¹---------------------------------------------------------------
+     A*¹Subfile Control Format
+     A*¹---------------------------------------------------------------
+     A          R CTL01                     SFLCTL(SFL01)
+     A*%%TS  SD  20250408  134334  JG          REL-V7R3M0  5770-WDS
+     A                                      SFLSIZ(0011)
+     A                                      SFLPAG(0011)
+     A                                      TEXT('Sub-file control format')
+     A                                      CF03(03 'Exit')
+     A                                      KEEP
+     A                                      BLINK
+     A                                      OVERLAY
+     A N71                                  SFLDSP
+     A N72                                  SFLDSPCTL
+     A  72                                  SFLDLT
+     A* 81                                  SFLEND(*MORE)
+     A*           SHWREC         4S 0H      SFLRCDNBR(CURSOR)
+     A            SHWREC         4S 0H      SFLRCDNBR
+     A                                  1  2'CLIP'
+     A                                  1  7'TECNOLOGIA'
+     A                                  4 26'Consulta de Productos'
+     A                                      DSPATR(UL)
+     A                                  6  2'NRO CLIENTE:'
+     A            CLIENT         6S 0O  6 16
+     A                                  2 68TIME
+     A                                  1 68DATE
+     A                                      EDTWRD('  /  /  ')
+     A                                  8  2'Producto    Nombre                -
+     A                                                          Cantidad   Est'
+     A                                      DSPATR(UL)
+     A* Trailer Record
+     A          R FMT02
+     A*%%TS  SD  20250408  000207  JG          REL-V7R3M0  5770-WDS
+     A                                      KEEP
+     A                                      OVERLAY
+     A                                      PUTOVR
+     A            CMDDTA        78   O 24  2OVRDTA
+     A                                      COLOR(BLU)
