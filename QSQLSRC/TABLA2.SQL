@@ -1,3 +1,3 @@
  CREATE TABLE TABLA2 (ID CHAR(2), NOM CHAR(20), APE CHAR(20))
  -- ESTO ES UN COMENTARIO CLIP   POPR SEGUNDA VEZ
- -- Este es otro comentario
+ -- Este es otro comentario     GRACIAS
