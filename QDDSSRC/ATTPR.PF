@@ -1,0 +1,18 @@
+     A          R RATTPR
+     A            PGMNAME       10A         TEXT('Programa')
+     A                                      COLHDG('Nombre de Programa')
+
+     A            PGMLIB        10A         TEXT('Libreria')
+     A                                      COLHDG('Libreria')
+
+     A            PGMATR        10A         TEXT('Atributo')
+     A                                      COLHDG('Atributo de Programa')
+
+     A            OBSINF         1A         TEXT('Inf. Ob.')
+     A                                      COLHDG('Inf.Observable')
+
+
+     A            TEXT          50A         TEXT('Texto')
+     A                                      COLHDG('Texto')
+
+     A          K PGMNAME
