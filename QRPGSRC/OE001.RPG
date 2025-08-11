@@ -1,0 +1,85 @@
+     A*¹---------------------------------------------------------------
+     A*ÌCOPYRIGHT CLIP TECNOLOGIA
+     A*ÌPRUEBA ALDON RDOI
+     A*¹---------------------------------------------------------------
+     FOE001DS CF  E                    WORKSTN
+     F                                        @RRN1 KSFILE SFL01
+     FCLIPROD IF  E           K        DISK
+     F*
+     E                    CMD     1   3 78               CMD Key Data
+     E*
+     C*****************************************************************
+     C* Receive Parameters
+     C*
+     C                     SETOF                     03
+     C* Until F3
+     C           *IN03     DOUEQ'1'
+     C*
+     C*  Initialise screen
+     C                     Z-ADD*ZERO     CLIENT
+     C                     Z-ADD1         @RRN1
+     C                     MOVEACMD,1     CMDDTA
+     C*  Get Order No. & Customer No.
+     C                     WRITEFMT02                  99
+     C                     EXFMTFMT01                  99
+     C*
+     C* So long as Exit not requested #1
+     C           *IN03     IFEQ '0'
+     C*
+     C*  Retrieve Customer Details
+     C                     EXSR $RVCUS
+     C*
+     C*  Set up blank subfile for Order lines
+     C*  Display Order Entry screen
+     C*          @RRN1     IFGT 1
+     C                     SETOF                     7172
+     C                     Z-ADD1         SHWREC
+     C                     MOVEACMD,2     CMDDTA
+     C                     WRITEFMT02                  99
+     C                     EXFMTCTL01                  99
+     C*
+     C* So long as Exit not requested #2
+     C*  Delete SFL
+     C                     MOVEL'1'       *IN72
+     C                     WRITECTL01                  99
+     C                     MOVEL'0'       *IN72
+     C                     Z-ADD1         @RRN1
+     C*
+     C* End: Until F3
+     C*                    END
+     C                     END
+     C                     ENDDO
+     C*
+     C* Terminate Program
+     C                     SETON                     LR
+     C                     RETRN
+     C*****************************************************************
+     C*
+     C*****************************************************************
+     C           $RVCUS    BEGSR
+     C*
+     C* Get Customer Record
+     C                     Z-ADD1         @RRN1
+     C           KEYCLI    CHAINCLIPROD              40
+     C           *IN40     DOWEQ'0'
+     C                     Z-ADDCODPRO    SFCODP
+     C                     MOVELNOMBRE    SFNOMB
+     C                     Z-ADDCANTID    SFCANT
+     C                     MOVELESTADO    SFESTA
+     C                     WRITESFL01
+     C                     ADD  1         @RRN1   50
+     C           KEYCLI    READECLIPROD                  40
+     C                     END
+     C*
+     C                     ENDSR
+     C*****************************************************************
+     C* Definitions
+     C*
+     C           KEYCLI    KLIST
+     C                     KFLD           CLIENT
+     C*
+     C*****************************************************************
+**
+F3=Exit
+F3=Exit  ENTER=continue
+F3=Exit  Enter Order Lines, then ENTER to continue
